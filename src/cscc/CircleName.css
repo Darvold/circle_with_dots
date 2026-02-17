@@ -11,18 +11,18 @@
     top: 50%;
     z-index: 7;
     transform: translate(-50%, -50%);
-}
 
-.circle-border {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    border: 2px solid var(--border-color);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
+    .circle-border {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        border: 2px solid var(--border-color);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+    }
 }
 
 .dots-wrapper {
@@ -52,54 +52,111 @@
     will-change: width, height, background;
     transform: translate(-50%, -50%);
     background: none;
-    transition: width 0.3s ease-in-out,
-    height 0.3s ease-in-out,
-    background 0.3s ease-in-out,
-    border 0.3s ease-in-out;
-}
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out,
+    background 0.3s ease-in-out, border 0.3s ease-in-out;
 
-/* Маркер точки (маленький кружок) */
-.dot-marker {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--color-text-dot);
-    border: 1px solid var(--color-text-dot);
-    transition: width 0.3s ease-in-out,
-    height 0.3s ease-in-out,
-    background 0.3s ease-in-out,
-    border 0.3s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 11;
-}
+    /* Маркер точки (маленький кружок) */
+    .dot-marker {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--color-text-dot);
+        border: 1px solid var(--color-text-dot);
+        transition: width 0.3s ease-in-out, height 0.3s ease-in-out,
+        background 0.3s ease-in-out, border 0.3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 11;
 
-/* Цифра внутри маркера (для неактивных точек) */
-.dot-marker .dot-number {
-    display: none;
-    font-size: 20px;
-    font-family: var(--font-family-text);
-    color: var(--color-text-dot);
-    line-height: 1;
-    z-index: 12;
-}
+        /* Цифра внутри маркера (для неактивных точек) */
+        .dot-number {
+            display: none;
+            font-size: 20px;
+            font-family: var(--font-family-text);
+            color: var(--color-text-dot);
+            line-height: 1;
+            z-index: 12;
+        }
+    }
 
-/* Имя точки */
-.dot-name {
-    position: absolute;
-    left: 40px;
-    opacity: 0;
-    font-size: 20px;
-    transition: opacity 0.3s ease-in-out, left 0.3s ease-in-out;
-    max-width: 50px;
-    text-align: center;
-    color: var(--color-text-dot);
-    font-weight: 600;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 15;
+    /* Имя точки */
+    .dot-name {
+        position: absolute;
+        left: 40px;
+        opacity: 0;
+        font-size: 20px;
+        transition: opacity 0.3s ease-in-out, left 0.3s ease-in-out;
+        max-width: 50px;
+        text-align: center;
+        color: var(--color-text-dot);
+        font-weight: 600;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 15;
+    }
+
+    /* СТИЛИ ДЛЯ HOVER */
+    &.hover {
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        z-index: 20;
+
+        .dot-marker {
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 21;
+            border: 1px solid var(--border-color);
+
+            .dot-number {
+                display: block;
+                font-size: 20px;
+                z-index: 22;
+                animation: popIn 0.4s ease-in-out;
+            }
+        }
+
+        .dot-name {
+            display: none;
+        }
+    }
+
+    /* СТИЛИ ДЛЯ АКТИВНОЙ ТОЧКИ */
+    &.active {
+        width: 50px;
+        height: 50px;
+        background: white;
+        z-index: 30;
+        box-sizing: border-box;
+
+        .dot-marker {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 31;
+
+            .dot-number {
+                display: block;
+                font-size: 20px;
+                animation: popIn 0.4s ease-in-out;
+                z-index: 32;
+            }
+        }
+
+        .dot-name {
+            opacity: 1;
+            left: 80px;
+            z-index: 33;
+            animation: popInLeft 0.4s ease-in-out;
+        }
+    }
 }
 
 /* ОБЩАЯ АНИМАЦИЯ ДЛЯ ЦИФРЫ */
@@ -118,61 +175,6 @@
     }
 }
 
-/* СТИЛИ ДЛЯ HOVER */
-.dot.hover {
-    width: 50px;
-    height: 50px;
-    box-sizing: border-box;
-
-    z-index: 20;
-}
-
-.dot.hover .dot-marker {
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 21;
-    border: 1px solid var(--border-color);
-}
-
-.dot.hover .dot-marker .dot-number {
-    display: block;
-    font-size: 20px;
-    z-index: 22;
-    animation: popIn 0.4s ease-in-out;
-}
-
-.dot.hover .dot-name {
-    display: none;
-}
-
-/* СТИЛИ ДЛЯ АКТИВНОЙ ТОЧКИ */
-.dot.active {
-    width: 50px;
-    height: 50px;
-    background: white;
-    z-index: 30;
-    box-sizing: border-box;
-}
-
-.dot.active .dot-marker {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border: 1px solid var(--border-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 31;
-}
-
-/* Показываем цифру внутри маркера у активной точки */
-.dot.active .dot-marker .dot-number {
-    display: block;
-    font-size: 20px;
-    animation: popIn 0.4s ease-in-out;
-    z-index: 32;
-}
 @keyframes popInLeft {
     0% {
         opacity: 0;
@@ -188,14 +190,6 @@
     }
 }
 
-/* Показываем имя */
-.dot.active .dot-name {
-    opacity: 1;
-    left: 80px;
-    z-index: 33;
-    animation: popInLeft 0.4s ease-in-out;
-}
-
 /* КНОПКИ */
 .navigation-container {
     position: absolute;
@@ -205,19 +199,19 @@
     flex-direction: column;
     gap: 10px;
     z-index: 200;
-}
 
-.pagination-info {
-    font-size: 16px;
-    color: black;
-    font-family: var(--font-family-text);
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-}
+    .pagination-info {
+        font-size: 16px;
+        color: black;
+        font-family: var(--font-family-text);
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
 
-.nav-buttons {
-    display: flex;
-    gap: 15px;
+    .nav-buttons {
+        display: flex;
+        gap: 15px;
+    }
 }
 
 .nav-button {
@@ -233,73 +227,27 @@
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
-.nav-button:hover:not(:disabled) {
-    background: #f5f5f5;
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+    &:hover:not(:disabled) {
+        background: #f5f5f5;
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
 
-.nav-button:active:not(:disabled) {
-    transform: scale(0.95);
-}
+    &:active:not(:disabled) {
+        transform: scale(0.95);
+    }
 
-.nav-button:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
+    &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
 
-/* Навигация */
-.navigation-container {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin: 30px 0;
-}
-
-.pagination-info {
-    font-size: 24px;
-    font-weight: 400;
-    color: #42567a;
-    letter-spacing: 2px;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.nav-button {
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(66, 86, 122, 0.2);
-    border-radius: 50%;
-    background: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #42567a;
-    transition: all 0.3s ease;
-    font-size: 18px;
-}
-
-.nav-button:hover:not(:disabled) {
-    background: #42567a;
-    color: white;
-    border-color: #42567a;
-}
-
-.nav-button:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.nav-button svg {
-    width: 8px;
-    height: 12px;
+    svg {
+        width: 8px;
+        height: 12px;
+    }
 }
 
 /* Swiper слайдер */
@@ -311,8 +259,17 @@
     transform: translateY(0);
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: auto;
-}
 
+    &.fade-out {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    &.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 .scroll-title {
     font-size: 20px;
@@ -328,10 +285,12 @@
     width: 100%;
     align-items: center;
     gap: 20px;
+
+    .block-absolute {
+        width: 40px;
+    }
 }
-.block-absolute {
-    width: 40px;
-}
+
 .scroll-content {
     display: flex;
     gap: 30px;
@@ -345,6 +304,7 @@
     user-select: none;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
+
     /* Аппаратное ускорение */
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -358,15 +318,13 @@
     will-change: transform;
     -webkit-backface-visibility: hidden;
 
-}
+    &:active {
+        cursor: grabbing;
+    }
 
-.scroll-content:active {
-    cursor: grabbing;
-
-}
-
-.scroll-content::-webkit-scrollbar {
-    display: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 /* Блоки событий */
@@ -384,22 +342,21 @@
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-}
 
+    .event-year {
+        font-size: 25px;
+        font-weight: 700;
+        color: #3877dd;
+        margin-bottom: 12px;
+        font-family: 'Bebas Neue', cursive;
+    }
 
-.event-year {
-    font-size: 25px;
-    font-weight: 700;
-    color: #3877dd;
-    margin-bottom: 12px;
-    font-family: 'Bebas Neue', cursive;
-}
-
-.event-description {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #42567a;
-    opacity: 0.9;
+    .event-description {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #42567a;
+        opacity: 0.9;
+    }
 }
 
 /* Кнопки для скролла */
@@ -419,21 +376,21 @@
     z-index: 5;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     animation: fadeIn 0.3s ease;
-}
 
-.scroll-button:hover {
-    background: #42567a;
-    color: white;
-    border-color: #42567a;
-    transform: scale(1.1);
-}
+    &:hover {
+        background: #42567a;
+        color: white;
+        border-color: #42567a;
+        transform: scale(1.1);
+    }
 
-.scroll-button:active {
-    transform: scale(0.95);
-}
+    &:active {
+        transform: scale(0.95);
+    }
 
-.scroll-button-left svg {
+    &-left svg {
 
+    }
 }
 
 /* Анимация появления кнопок */
@@ -448,17 +405,6 @@
     }
 }
 
-/* Анимация для блоков при смене категории */
-.scroll-section.fade-out {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.scroll-section.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Года */
 .years-container {
     position: absolute;
@@ -469,43 +415,88 @@
     justify-content: center;
     pointer-events: none;
     z-index: 7;
+
+    .year2 {
+        font-size: 160px;
+        font-weight: 700;
+        display: flex;
+        font-family: var(--font-family-text);
+
+        span {
+            display: inline-block;
+            min-width: 100px;
+            text-align: center;
+            transition: all 0.3s ease;
+
+            /* Оптимизация для анимации */
+            will-change: contents;
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+
+            &:first-child {
+                color: #5d5fef;
+            }
+
+            &:last-child {
+                color: #ef5da8;
+            }
+        }
+    }
 }
 
-.year2 {
-    font-size: 160px;
-    font-weight: 700;
-    display: flex;
-    font-family: var(--font-family-text);
-}
-.year2 span:first-child {
-    color: #5d5fef;
-}
-.year2 span:last-child {
-    color: #ef5da8;
-}
-.year2 span {
-    display: inline-block;
-    min-width: 100px;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-/* Оптимизация для анимации */
-.year2 span {
-    will-change: contents;
-    font-feature-settings: "tnum";
-    font-variant-numeric: tabular-nums;
-}
-
-
-/* Базовые стили для навигационных точек (скрыты на десктопе) */
+/* Навигационные точки */
 .navigation-dots {
     display: none;
-}
 
-/* Показываем только на мобильных */
-@media (max-width: 576px) {
-    .navigation-dots {
+    /* Показываем только на мобильных */
+    @media (max-width: 576px) {
         display: flex;
     }
 }
+
+/*Объединенные дублирующиеся стили для navigation-container*/
+   .navigation-container {
+       display: flex;
+       align-items: center;
+       gap: 30px;
+       margin: 30px 0;
+
+       .pagination-info {
+           font-size: 24px;
+           font-weight: 400;
+           color: #42567a;
+           letter-spacing: 2px;
+       }
+
+       .nav-buttons {
+           display: flex;
+           gap: 10px;
+       }
+   }
+
+ /*Объединенные дублирующиеся стили для nav-button*/
+   .nav-button {
+       width: 48px;
+       height: 48px;
+       border: 1px solid rgba(66, 86, 122, 0.2);
+       border-radius: 50%;
+       background: white;
+       cursor: pointer;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       color: #42567a;
+       transition: all 0.3s ease;
+       font-size: 18px;
+
+       &:hover:not(:disabled) {
+           background: #42567a;
+           color: white;
+           border-color: #42567a;
+       }
+
+       &:disabled {
+           opacity: 0.3;
+           cursor: not-allowed;
+       }
+   }

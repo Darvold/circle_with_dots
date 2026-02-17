@@ -3,40 +3,41 @@
     .border-line {
         border-left: none;
         border-right: none;
-    }
-    .border-line::before {
-        display: none;
+
+        &::before {
+            display: none;
+        }
+
+        &::after {
+            top: 55%;
+        }
     }
 
-    .border-line::after {
-        top: 55%;
-    }
     .circle-container {
         display: none;
     }
 
     .years-container {
-        top: 240px !important;
+        top: 200px !important;
         font-size: 50px;
-    }
-    .year2 {
-        font-size: 90px !important;
-    }
 
-    .year2 span {
-        min-width: 30px !important;
-    }
+        .year2 {
+            font-size: 90px !important;
 
-    .years-container {
-        top: 200px;
+            span {
+                min-width: 30px !important;
+            }
+        }
     }
 
     .scroll-section {
         bottom: 170px !important;
     }
+
     .block-absolute {
         display: none;
     }
+
     .scroll-content {
         max-width: 95%;
         gap: 15px;
@@ -48,32 +49,42 @@
         min-width: 250px !important;
         max-width: 200px !important;
         padding: 5px;
-    }
 
-    .event-year {
-        font-size: 22px !important;
-        margin-bottom: 8px;
-    }
+        .event-year {
+            font-size: 22px !important;
+            margin-bottom: 8px;
+        }
 
-    .event-description {
-        font-size: 16px !important;
-        line-height: 1.4;
+        .event-description {
+            font-size: 16px !important;
+            line-height: 1.4;
+        }
     }
 
     .scroll-button {
         width: 32px;
         height: 32px;
-    }
 
-    .scroll-button svg {
-        width: 6px;
-        height: 10px;
+        svg {
+            width: 6px;
+            height: 10px;
+        }
     }
 
     .navigation-container {
         bottom: 10px !important;
         left: 20px !important;
         gap: 5px;
+
+        .nav-buttons {
+            gap: 10px;
+        }
+
+        .pagination-info {
+            font-size: 18px !important;
+            margin-bottom: -15px !important;
+            margin-right: 40px;
+        }
     }
 
     .nav-button {
@@ -82,24 +93,14 @@
         font-size: 14px;
     }
 
-    .nav-buttons {
-        gap: 10px;
-    }
-
-    .pagination-info {
-        font-size: 18px !important;
-        margin-bottom: -15px !important;
-        margin-right: 40px;
-    }
-
     .date-history {
         font-size: 32px !important;
         padding-left: 20px;
         padding-top: 3rem !important;
-    }
 
-    .date-history::before {
-        display: none;
+        &::before {
+            display: none;
+        }
     }
 
     /* Стили для навигационных точек */
@@ -113,39 +114,39 @@
         gap: 16px;
         margin-top: 20px;
         padding-bottom: 10px;
-    }
 
-    .nav-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: #42567a;
-        opacity: 0.4;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #42567a;
+            opacity: 0.4;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
 
-    .nav-dot.active {
-        width: 12px;
-        height: 12px;
-        opacity: 1;
-        background-color: #42567a;
-        transform: scale(1.2);
-    }
+            &.active {
+                width: 12px;
+                height: 12px;
+                opacity: 1;
+                background-color: #42567a;
+                transform: scale(1.2);
+            }
 
-    .nav-dot:hover {
-        opacity: 0.8;
-        transform: scale(1.1);
-    }
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
 
-    .nav-dot:active {
-        transform: scale(0.95);
-    }
+            &:active {
+                transform: scale(0.95);
+            }
 
-    .nav-dot:disabled {
-        opacity: 0.2;
-        cursor: not-allowed;
+            &:disabled {
+                opacity: 0.2;
+                cursor: not-allowed;
+            }
+        }
     }
 }
