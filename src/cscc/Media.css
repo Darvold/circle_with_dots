@@ -1,0 +1,151 @@
+/* Медиа-запрос для мобильных устройств (до 576px) */
+@media (max-width: 576px) {
+    .border-line {
+        border-left: none;
+        border-right: none;
+    }
+    .border-line::before {
+        display: none;
+    }
+
+    .border-line::after {
+        top: 55%;
+    }
+    .circle-container {
+        display: none;
+    }
+
+    .years-container {
+        top: 240px !important;
+        font-size: 50px;
+    }
+    .year2 {
+        font-size: 90px !important;
+    }
+
+    .year2 span {
+        min-width: 30px !important;
+    }
+
+    .years-container {
+        top: 200px;
+    }
+
+    .scroll-section {
+        bottom: 170px !important;
+    }
+    .block-absolute {
+        display: none;
+    }
+    .scroll-content {
+        max-width: 95%;
+        gap: 15px;
+        height: 120px;
+        padding: 5px 5px 15px;
+    }
+
+    .event-block {
+        min-width: 250px !important;
+        max-width: 200px !important;
+        padding: 5px;
+    }
+
+    .event-year {
+        font-size: 22px !important;
+        margin-bottom: 8px;
+    }
+
+    .event-description {
+        font-size: 16px !important;
+        line-height: 1.4;
+    }
+
+    .scroll-button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .scroll-button svg {
+        width: 6px;
+        height: 10px;
+    }
+
+    .navigation-container {
+        bottom: 10px !important;
+        left: 20px !important;
+        gap: 5px;
+    }
+
+    .nav-button {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .nav-buttons {
+        gap: 10px;
+    }
+
+    .pagination-info {
+        font-size: 18px !important;
+        margin-bottom: -15px !important;
+        margin-right: 40px;
+    }
+
+    .date-history {
+        font-size: 32px !important;
+        padding-left: 20px;
+        padding-top: 3rem !important;
+    }
+
+    .date-history::before {
+        display: none;
+    }
+
+    /* Стили для навигационных точек */
+    .navigation-dots {
+        position: absolute;
+        bottom: 45px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .nav-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #42567a;
+        opacity: 0.4;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .nav-dot.active {
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+        background-color: #42567a;
+        transform: scale(1.2);
+    }
+
+    .nav-dot:hover {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+
+    .nav-dot:active {
+        transform: scale(0.95);
+    }
+
+    .nav-dot:disabled {
+        opacity: 0.2;
+        cursor: not-allowed;
+    }
+}

@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+:root {
+    --border-color: rgba(0, 0, 165, 0.1);
+    --color-text-history: #42567a;
+    --color-text-dot: #42567a;
+    --font-family-text: 'PT Sans', sans-serif;
+    --color-line-1: #3877ee;
+    --color-line-2: #ef5da8;
+}

@@ -1,0 +1,30 @@
+.date-history {
+    color: var(--color-text-history);
+    font-size: 49px;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 4rem;
+    padding-top: 5rem;
+    font-family: var(--font-family-text);
+}
+
+/* Боковая полупрозрачная линия */
+.date-history::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 6rem;
+    bottom: 0.4rem;
+    width: 5px;
+    background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            var(--color-line-1) 0%,
+            var(--color-line-2) 100%,
+            transparent 100%
+    );
+}
+
